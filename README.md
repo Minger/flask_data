@@ -1,0 +1,3 @@
+# Flask Data
+
+This is a few hours effort to learn enough Flask and SqlAlchemy to setup an environment serve a simple request. This effort relies on pandas to "automagically" create an sql table from csv and then on SqlAlchemy to create a class from sql table. (One might prefer for safety manually define these things--I've seen bugs due to unexpected results from such automapping.) One hitch in this process was the table not being viable for SqlAlchemy AutoMapping due to lack of a primary index, which was easily remedied once understood. Pandas to_sql obviously does not pick one, but neither does it allow specification of one so it had to be done after using raw SQL.

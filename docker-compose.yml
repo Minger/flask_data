@@ -1,0 +1,25 @@
+version: '3'
+ 
+services:
+ web:
+   restart: on-failure
+   build: ./web
+   expose:
+     - 5000
+   ports:
+     - 5000:5000
+   volumes:
+     - /usr/src/app/project/static
+     - ./db:/db
+   depends_on:
+     - postgres
+   command: /bin/sh -c "python /db/seed.py && python /app/app.py"
+
+ postgres:
+   image: muccg/postgres-ssl:9.6
+   ports:
+     - 5432:5432
+   environment:
+     POSTGRES_USER: postgres
+     POSTGRES_PASSWORD: postgres
+     POSTGRES_DB: dataset
