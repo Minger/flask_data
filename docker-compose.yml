@@ -9,7 +9,6 @@ services:
    ports:
      - 5000:5000
    volumes:
-     - /usr/src/app/project/static
      - ./db:/db
    depends_on:
      - postgres
